@@ -1,11 +1,9 @@
 package seleniumtest;
 
-
-
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.annotations.Test;
 
 import com.aventstack.extentreports.ExtentReports;
@@ -27,7 +25,7 @@ public class Seleniumtest
 	ExtentReports extent;
 
 
-@Test (priority=1)
+//@Test (priority=1)
 
 
 public static void LaunchBrowser() throws Exception {
@@ -38,7 +36,13 @@ public static void LaunchBrowser() throws Exception {
 	
 	
 	System.setProperty("webdriver.chrome.driver" ,"C:/Selinium/chromedriver_win32/chromedriver.exe");
-	WebDriver  driver = new ChromeDriver();
+
+	
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("--headless");
+	
+	WebDriver  driver = new ChromeDriver(options);
+	
     driver.get("https://www.vestrata.com");
     driver.manage().window().maximize();
     String title = driver.getTitle();
@@ -68,14 +72,18 @@ public static void LaunchBrowser() throws Exception {
         
         extent.flush();
 }
-@Test (priority=2)
+//@Test (priority=2)
 
 
 public static void amazon() {
 	
 	
 	System.setProperty("webdriver.chrome.driver" ,"C:/Selinium/chromedriver_win32/chromedriver.exe");
-	WebDriver  driver = new ChromeDriver();
+	
+	ChromeOptions options = new ChromeOptions();
+	options.addArguments("--headless");
+	
+	WebDriver  driver = new ChromeDriver(options);
     driver.get("https://www.amazon.in/");
     driver.manage().window().maximize();
     String tagname = driver.getTitle();
